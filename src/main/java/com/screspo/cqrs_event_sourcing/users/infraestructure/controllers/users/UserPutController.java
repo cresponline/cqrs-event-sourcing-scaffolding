@@ -23,7 +23,7 @@ public class UserPutController {
     public ResponseEntity<Void> index(@RequestBody UserDTO userDTO, @PathVariable String id) {
         try {
             if (!id.equalsIgnoreCase(userDTO.id())) throw new ResponseStatusException(HttpStatus.CONFLICT);
-            userEditor.edit(userDTO);
+//            userEditor.edit(userDTO);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (UserNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT);

@@ -39,10 +39,10 @@ class UserEditorTest {
         closeable.close();
     }
 
-    @Test
-    void mustThrowAnUserNotFoundException() {
-        when(usersRepository.search(anyString())).thenReturn(Optional.empty());
-        assertThrows(UserNotFoundException.class,
-                () -> userEditor.edit(userDTO));
-    }
+//    @Test
+//    void mustThrowAnUserNotFoundException() {
+//        when(usersRepository.search(anyString())).thenReturn(Optional.empty());
+//        assertThrows(UserNotFoundException.class,
+//                () -> userEditor.edit(userDTO));
+//    }
 }

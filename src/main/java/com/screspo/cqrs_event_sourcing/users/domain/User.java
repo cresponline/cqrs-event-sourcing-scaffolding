@@ -1,10 +1,10 @@
 package com.screspo.cqrs_event_sourcing.users.domain;
 
 public class User {
-    private final String id;
-    private final String name;
-    private final String surname;
-    private final String email;
+    private final UserId id;
+    private final UserName name;
+    private final UserSurname surname;
+    private final UserEmail email;
 
     public User(Builder builder) {
         this.id = builder.id;
@@ -13,44 +13,44 @@ public class User {
         this.email = builder.email;
     }
 
-    public String id() {
+    public UserId id() {
         return id;
     }
 
-    public String name() {
+    public UserName name() {
         return name;
     }
 
-    public String surname() {
+    public UserSurname surname() {
         return surname;
     }
 
-    public String email() {
+    public UserEmail email() {
         return email;
     }
 
     public static class Builder {
-        private String id;
-        private String name;
-        private String surname;
-        private String email;
+        private UserId id;
+        private UserName name;
+        private UserSurname surname;
+        private UserEmail email;
 
-        public Builder id(final String id) {
+        public Builder id(final UserId id) {
             this.id = id;
             return this;
         }
 
-        public Builder name(final String name) {
+        public Builder name(final UserName name) {
             this.name = name;
             return this;
         }
 
-        public Builder surname(final String surname) {
+        public Builder surname(final UserSurname surname) {
             this.surname = surname;
             return this;
         }
 
-        public Builder email(final String email) {
+        public Builder email(final UserEmail email) {
             this.email = email;
             return this;
         }

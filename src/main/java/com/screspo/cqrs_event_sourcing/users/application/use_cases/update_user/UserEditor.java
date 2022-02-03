@@ -16,22 +16,22 @@ public class UserEditor {
     }
 
 
-    public void edit(UserDTO userDTO) {
-        usersRepository.search(userDTO.id())
-                .map(user -> userFromDto(userDTO))
-                .ifPresentOrElse(usersRepository::save,
-                        () -> {
-                            throw new UserNotFoundException();
-                        });
+//    public void edit(UserDTO userDTO) {
+//        usersRepository.search(userDTO.id())
+//                .map(user -> userFromDto(userDTO))
+//                .ifPresentOrElse(usersRepository::save,
+//                        () -> {
+//                            throw new UserNotFoundException();
+//                        });
+//
+//    }
 
-    }
-
-    private User userFromDto(UserDTO userDTO) {
-        return new User.Builder()
-                .id(userDTO.id())
-                .name(userDTO.name())
-                .surname(userDTO.surname())
-                .email(userDTO.email())
-                .build();
-    }
+//    private User userFromDto(UserDTO userDTO) {
+//        return new User.Builder()
+//                .id(userDTO.id())
+//                .name(userDTO.name())
+//                .surname(userDTO.surname())
+//                .email(userDTO.email())
+//                .build();
+//    }
 }

@@ -1,12 +1,12 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.persistence;
 
-import com.screspo.cqrs_event_sourcing.users.domain.User;
-import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
+import com.screspo.cqrs_event_sourcing.users.domain.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Repository
@@ -27,7 +27,7 @@ public class InMemoryUsersRepository implements UsersRepository {
     @Override
     public void save(User user) {
         users = users.stream()
-                .filter(u -> !user.id().equalsIgnoreCase(u.id()))
+                .filter(u -> !user.id().value().equalsIgnoreCase(u.id().value()))
                 .collect(Collectors.toList());
         users.add(user);
     }
@@ -35,33 +35,34 @@ public class InMemoryUsersRepository implements UsersRepository {
     @Override
     public void delete(String id) {
         users = users.stream()
-                .filter(user -> !user.id().equalsIgnoreCase(id))
+                .filter(user -> !user.id().value().equalsIgnoreCase(id))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Optional<User> search(String id) {
         return users.stream()
-                .filter(user -> user.id().equalsIgnoreCase(id))
+                .filter(user -> user.id().value().equalsIgnoreCase(id))
                 .findFirst();
     }
 
     private List<User> init() {
         List<User> users = new ArrayList<>();
         User user1 = new User.Builder()
-                .id("user1-id")
-                .name("user1")
-                .surname("one")
-                .email("user_one@email.com")
+                .id(new UserId(UUID.randomUUID().toString()))
+                .name(new UserName("user1"))
+                .surname(new UserSurname("one"))
+                .email(new UserEmail("user_one@email.com"))
                 .build();
 
         users.add(user1);
 
         User user2 = new User.Builder()
-                .id("user2-id")
-                .name("user2")
-                .surname("two")
-                .email("user_two@email.com")
+                .id(new UserId(UUID.randomUUID().toString()))
+                .name(new UserName("user2"))
+                .surname(new UserSurname("two"))
+                .email(new UserEmail("user_two@email.com"))
+
                 .build();
 
         users.add(user2);

@@ -36,10 +36,10 @@ class UserDeleteControllerTest {
         closeable.close();
     }
 
-    @Test
-    void shouldRespondsWithOkStatusCode() {
-        ResponseEntity<Void> response = userDeleteController.index(UsersMother.searchAll().get(0).id());
-        verify(userRemover).remove(anyString());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
+//    @Test
+//    void shouldRespondsWithOkStatusCode() {
+//        ResponseEntity<Void> response = userDeleteController.index(UsersMother.searchAll().get(0).id());
+//        verify(userRemover).remove(anyString());
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 }

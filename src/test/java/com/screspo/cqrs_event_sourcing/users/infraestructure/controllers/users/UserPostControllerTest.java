@@ -43,21 +43,21 @@ class UserPostControllerTest {
     }
 
 
-    @Test
-    void shouldRespondsWithCreatedStatusCode() {
-        doNothing().when(userCreator).create(userDTO);
-        ResponseEntity<Void> response = userPostController.index(userDTO);
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    }
-
-    @Test
-    void mustThrowResponseStatusExceptionWhenUserAlreadyExists() {
-        doThrow(UserAlreadyExistsException.class)
-                .when(userCreator)
-                .create(userDTO);
-
-        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
-                () -> userPostController.index(userDTO));
-        assertEquals(HttpStatus.CONFLICT, exception.getStatus());
-    }
+//    @Test
+//    void shouldRespondsWithCreatedStatusCode() {
+//        doNothing().when(userCreator).create(userDTO);
+//        ResponseEntity<Void> response = userPostController.index(userDTO);
+//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+//    }
+//
+//    @Test
+//    void mustThrowResponseStatusExceptionWhenUserAlreadyExists() {
+//        doThrow(UserAlreadyExistsException.class)
+//                .when(userCreator)
+//                .create(userDTO);
+//
+//        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+//                () -> userPostController.index(userDTO));
+//        assertEquals(HttpStatus.CONFLICT, exception.getStatus());
+//    }
 }

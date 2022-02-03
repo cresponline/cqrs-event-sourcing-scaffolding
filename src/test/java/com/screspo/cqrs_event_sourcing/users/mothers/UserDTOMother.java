@@ -13,6 +13,6 @@ public class UserDTOMother {
     }
 
     public static UserDTO createFromUser(User user) {
-        return create(user.id(), user.name(), user.surname(), user.email());
+        return create(user.id().value(), user.name().value(), user.surname().value(), user.email().value());
     }
 }

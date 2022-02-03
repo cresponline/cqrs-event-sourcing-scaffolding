@@ -42,20 +42,20 @@ class UserPutControllerTest {
     }
 
 
-    @Test
-    void shouldRespondsWithOkHttpStatusCode() {
-        doNothing().when(userEditor).edit(userDTO);
-        ResponseEntity<Void> response = userPutController.index(userDTO, userDTO.id());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
+//    @Test
+//    void shouldRespondsWithOkHttpStatusCode() {
+//        doNothing().when(userEditor).edit(userDTO);
+//        ResponseEntity<Void> response = userPutController.index(userDTO, userDTO.id());
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 
-    @Test
-    void mustThrowResponseStatusExceptionWithNoContentHttpStatusCode() {
-        doThrow(UserNotFoundException.class).when(userEditor).edit(userDTO);
-        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class,
-                () -> userPutController.index(userDTO, userDTO.id()));
-        assertEquals(HttpStatus.NO_CONTENT, responseStatusException.getStatus());
-    }
+//    @Test
+//    void mustThrowResponseStatusExceptionWithNoContentHttpStatusCode() {
+//        doThrow(UserNotFoundException.class).when(userEditor).edit(userDTO);
+//        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class,
+//                () -> userPutController.index(userDTO, userDTO.id()));
+//        assertEquals(HttpStatus.NO_CONTENT, responseStatusException.getStatus());
+//    }
 
     @Test
     void mustThrowResponseStatusExceptionWithConflictHttpStatusCode() {

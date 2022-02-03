@@ -1,22 +1,19 @@
-package com.screspo.cqrs_event_sourcing.users.application.dtos;
+package com.screspo.cqrs_event_sourcing.users.application.use_cases.create;
 
-import com.screspo.cqrs_event_sourcing.users.domain.User;
+import com.screspo.cqrs_event_sourcing.shared.domain.bus.command.Command;
 
-public class UserDTO {
+public class CreateUserCommand extends Command {
+
     private final String id;
     private final String name;
     private final String surname;
     private final String email;
 
-    public UserDTO(String id, String name, String surname, String email) {
+    public CreateUserCommand(String id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
-    }
-
-    public static UserDTO fromAggregate(User user) {
-        return new UserDTO(user.id().value(), user.name().value(), user.surname().value(), user.email().value());
     }
 
     public String id() {
@@ -50,6 +47,4 @@ public class UserDTO {
     public String getEmail() {
         return email;
     }
-
-
 }

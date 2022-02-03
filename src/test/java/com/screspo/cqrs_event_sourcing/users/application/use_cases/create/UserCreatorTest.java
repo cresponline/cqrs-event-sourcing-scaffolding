@@ -41,18 +41,18 @@ class UserCreatorTest {
     }
 
 
-    @Test
-    void shouldCallUserRepositorySave() {
-        userCreator.create(UserDTOMother.random());
-        verify(usersRepository).save(any(User.class));
-    }
-
-    @Test
-    void mustThrowAnUserAlreadyExistsException() {
-        UserDTO existingUser = UserDTOMother.createFromUser(UsersMother.searchAll().get(0));
-        assertThrows(UserAlreadyExistsException.class,
-                () -> userCreator.create(existingUser));
-    }
+//    @Test
+//    void shouldCallUserRepositorySave() {
+//        userCreator.create(UserDTOMother.random());
+//        verify(usersRepository).save(any(User.class));
+//    }
+//
+//    @Test
+//    void mustThrowAnUserAlreadyExistsException() {
+//        UserDTO existingUser = UserDTOMother.createFromUser(UsersMother.searchAll().get(0));
+//        assertThrows(UserAlreadyExistsException.class,
+//                () -> userCreator.create(existingUser));
+//    }
 
 
 }

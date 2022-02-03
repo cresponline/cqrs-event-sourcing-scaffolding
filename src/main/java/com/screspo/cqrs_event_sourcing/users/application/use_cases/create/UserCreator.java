@@ -15,23 +15,14 @@ public class UserCreator {
         this.usersRepository = usersRepository;
     }
 
-    public void create(UserDTO userDTO) {
+    public void create(User user) {
         usersRepository.searchAll().stream()
-                .filter(user -> user.id().equalsIgnoreCase(userDTO.id()))
+                .filter(u -> u.id().value().equalsIgnoreCase(user.id().value()))
                 .findFirst()
-                .ifPresent((user) -> {
+                .ifPresent((u) -> {
                     throw new UserAlreadyExistsException();
                 });
 
-        usersRepository.save(userFromDto(userDTO));
-    }
-
-    private User userFromDto(UserDTO userDTO) {
-        return new User.Builder()
-                .id(userDTO.id())
-                .name(userDTO.name())
-                .surname(userDTO.surname())
-                .email(userDTO.email())
-                .build();
+        usersRepository.save(user);
     }
 }

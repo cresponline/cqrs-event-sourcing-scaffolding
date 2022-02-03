@@ -26,7 +26,7 @@ public class UserPostController {
     @PostMapping
     public ResponseEntity<Void> index(@RequestBody UserDTO userDTO) {
         try {
-            userCreator.create(userDTO);
+//            userCreator.create(userDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
