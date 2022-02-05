@@ -1,23 +1,23 @@
-package com.screspo.cqrs_event_sourcing.users.application.dtos;
+package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.Response;
 import com.screspo.cqrs_event_sourcing.users.domain.User;
 
-public class UserDTO implements Response {
+public final class UserResponse implements Response {
     private final String id;
     private final String name;
     private final String surname;
     private final String email;
 
-    public UserDTO(String id, String name, String surname, String email) {
+    public UserResponse(String id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
     }
 
-    public static UserDTO fromAggregate(User user) {
-        return new UserDTO(user.id().value(), user.name().value(), user.surname().value(), user.email().value());
+    public static UserResponse fromAggregate(User user) {
+        return new UserResponse(user.id().value(), user.name().value(), user.surname().value(), user.email().value());
     }
 
     public String id() {

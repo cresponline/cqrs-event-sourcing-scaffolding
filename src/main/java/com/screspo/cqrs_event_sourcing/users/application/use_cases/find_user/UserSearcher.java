@@ -1,7 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
 import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
+import com.screspo.cqrs_event_sourcing.users.domain.UserId;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ public class UserSearcher {
         this.usersRepository = usersRepository;
     }
 
-    public UserDTO search(String id) {
-        return usersRepository.search(id)
-                .map(UserDTO::fromAggregate)
+    public UserResponse search(UserId id) {
+        return usersRepository.search(id.value())
+                .map(UserResponse::fromAggregate)
                 .orElseThrow(UserNotFoundException::new);
     }
 }

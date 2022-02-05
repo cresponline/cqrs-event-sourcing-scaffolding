@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Set;
 
 @Service
@@ -22,7 +23,7 @@ public final class CommandHandlersInformation {
     public Class<? extends CommandHandler> search(Class<? extends Command> commandClass) throws CommandNotRegisteredError {
         Class<? extends CommandHandler> commandHandlerClass = indexedCommandHandlers.get(commandClass);
 
-        if (null == indexedCommandHandlers.get(commandClass)) {
+        if (Objects.isNull(indexedCommandHandlers.get(commandClass))) {
             throw new CommandNotRegisteredError(commandClass);
         }
 

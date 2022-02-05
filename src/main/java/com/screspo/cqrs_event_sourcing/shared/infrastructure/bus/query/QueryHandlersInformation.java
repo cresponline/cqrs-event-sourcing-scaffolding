@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -15,7 +16,7 @@ public final class QueryHandlersInformation {
     HashMap<Class<? extends Query>, Class<? extends QueryHandler>> indexedQueryHandlers;
 
     public QueryHandlersInformation() {
-        Reflections reflections = new Reflections("tv.codely");
+        Reflections reflections = new Reflections("com.screspo");
         Set<Class<? extends QueryHandler>> classes = reflections.getSubTypesOf(QueryHandler.class);
 
         indexedQueryHandlers = formatHandlers(classes);
@@ -24,7 +25,7 @@ public final class QueryHandlersInformation {
     public Class<? extends QueryHandler> search(Class<? extends Query> queryClass) throws QueryNotRegisteredError {
         Class<? extends QueryHandler> queryHandlerClass = indexedQueryHandlers.get(queryClass);
 
-        if (null == queryHandlerClass) {
+        if (Objects.isNull(queryHandlerClass)) {
             throw new QueryNotRegisteredError(queryClass);
         }
 

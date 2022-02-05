@@ -1,8 +1,10 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 
+import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryBus;
+import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryHandlerExecutionError;
 import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
-import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
-import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.UserSearcher;
+import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.FindUserQuery;
+import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +17,17 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping(value = "/users/{id}")
 public class UserGetController {
 
-    private final UserSearcher userSearcher;
+    private final QueryBus queryBus;
 
-    public UserGetController(UserSearcher userSearcher) {
-        this.userSearcher = userSearcher;
+    public UserGetController(QueryBus queryBus) {
+        this.queryBus = queryBus;
     }
 
     @GetMapping
-    public ResponseEntity<UserDTO> index(@PathVariable String id) {
+    public ResponseEntity<UserResponse> index(@PathVariable String id) {
         try {
-            return ResponseEntity.ok(userSearcher.search(id));
-        } catch (UserNotFoundException e) {
+            return ResponseEntity.ok(queryBus.ask(new FindUserQuery(id)));
+        } catch (QueryHandlerExecutionError e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         }
     }

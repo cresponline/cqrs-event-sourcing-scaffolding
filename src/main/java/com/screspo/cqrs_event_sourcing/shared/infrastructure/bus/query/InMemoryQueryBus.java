@@ -18,10 +18,7 @@ public final class InMemoryQueryBus implements QueryBus {
     public Response ask(Query query) throws QueryHandlerExecutionError {
         try {
             Class<? extends QueryHandler> queryHandlerClass = information.search(query.getClass());
-
-            QueryHandler handler = context.getBean(queryHandlerClass);
-
-            return handler.handle(query);
+            return context.getBean(queryHandlerClass).handle(query);
         } catch (Throwable error) {
             throw new QueryHandlerExecutionError(error);
         }
