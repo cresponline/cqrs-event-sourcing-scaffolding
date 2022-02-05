@@ -4,7 +4,6 @@ package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.command.CommandBus;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.command.CommandHandlerExecutionError;
 import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
-import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserAlreadyExistsException;
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.create.CreateUserCommand;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

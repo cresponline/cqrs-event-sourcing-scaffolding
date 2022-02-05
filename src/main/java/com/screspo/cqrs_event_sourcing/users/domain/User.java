@@ -25,14 +25,14 @@ public class User extends AggregateRoot {
     }
 
     public User edit(UserId id, UserName name, UserSurname surname, UserEmail email) {
-        User newUser = new User(id, name, surname, email);
-        newUser.record(new UserEditedDomainEvent(
+        User edited = new User(id, name, surname, email);
+        edited.record(new UserEditedDomainEvent(
                 id.value(),
                 name.value(),
                 surname.value(),
                 email.value())
         );
-        return newUser;
+        return edited;
     }
 
     public UserId id() {
@@ -82,8 +82,5 @@ public class User extends AggregateRoot {
             user.record(new UserCreatedDomainEvent(id.value(), name.value(), surname.value(), email.value()));
             return user;
         }
-
     }
-
-
 }

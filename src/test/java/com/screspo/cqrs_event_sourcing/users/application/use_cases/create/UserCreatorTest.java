@@ -1,21 +1,13 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.create;
 
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
-import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserAlreadyExistsException;
-import com.screspo.cqrs_event_sourcing.users.domain.User;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
-import com.screspo.cqrs_event_sourcing.users.mothers.UserDTOMother;
 import com.screspo.cqrs_event_sourcing.users.mothers.UsersMother;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class UserCreatorTest {

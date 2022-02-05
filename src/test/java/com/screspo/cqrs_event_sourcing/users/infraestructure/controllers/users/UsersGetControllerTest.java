@@ -34,6 +34,7 @@ class UsersGetControllerTest {
     void tearDown() throws Exception {
         closeable.close();
     }
+
     @Test
     void shouldRespondsWithOkHttpStatus() {
         ResponseEntity<UsersDTO> usersResponse = usersGetController.index();

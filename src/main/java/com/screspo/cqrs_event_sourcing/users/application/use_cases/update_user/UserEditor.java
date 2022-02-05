@@ -16,7 +16,6 @@ public class UserEditor {
         this.eventBus = eventBus;
     }
 
-
     public void edit(UserId id, UserName name, UserSurname surname, UserEmail email) {
         User user = usersRepository.search(id.value()).orElseThrow(
                 () -> {

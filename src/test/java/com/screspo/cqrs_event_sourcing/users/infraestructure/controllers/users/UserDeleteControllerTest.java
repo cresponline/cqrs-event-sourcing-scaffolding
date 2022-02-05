@@ -1,19 +1,11 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.delete.UserRemover;
-import com.screspo.cqrs_event_sourcing.users.mothers.UsersMother;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
 
 class UserDeleteControllerTest {
 

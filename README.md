@@ -2,7 +2,8 @@
 
 ## ℹ️ Introduction
 
-This is a repository intended to serve as a starting point if you want to bootstrap a Springboot project with JUnit and Maven based in CQRS & Event Sourcing Scaffolding Architecture.
+This is a repository intended to serve as a starting point if you want to bootstrap a Springboot project with JUnit and
+Maven based in CQRS & Event Sourcing Scaffolding Architecture.
 
 ## 🏁 How To Start
 

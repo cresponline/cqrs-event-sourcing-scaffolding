@@ -31,7 +31,8 @@ public final class UserDeletedDomainEvent extends DomainEvent {
 
     @Override
     public HashMap<String, Serializable> toPrimitives() {
-        return new HashMap<>() {};
+        return new HashMap<>() {
+        };
     }
 
     @Override

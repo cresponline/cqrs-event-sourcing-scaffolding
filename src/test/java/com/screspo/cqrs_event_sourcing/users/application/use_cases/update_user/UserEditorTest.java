@@ -1,21 +1,13 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.update_user;
 
 import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
-import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import com.screspo.cqrs_event_sourcing.users.mothers.UserDTOMother;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
 
 class UserEditorTest {
 
