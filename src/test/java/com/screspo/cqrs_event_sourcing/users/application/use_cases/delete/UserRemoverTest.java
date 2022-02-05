@@ -35,10 +35,10 @@ class UserRemoverTest {
         closeable.close();
     }
 
-    @Test
-    void shouldCallUserRepositoryDelete() {
-        userRemover.remove(new UserId(UUID.randomUUID().toString()));
-        verify(usersRepository).delete(anyString());
-    }
+//    @Test
+//    void shouldCallUserRepositoryDelete() {
+//        userRemover.remove(new UserId(UUID.randomUUID().toString()));
+//        verify(usersRepository).delete(anyString());
+//    }
 
 }
