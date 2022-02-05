@@ -1,4 +1,4 @@
-package com.screspo.cqrs_event_sourcing.shared.infrastructure.bus.event.spring;
+package com.screspo.cqrs_event_sourcing.shared.infrastructure.bus.event;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.EventBus;
@@ -10,10 +10,10 @@ import java.util.List;
 
 @Primary
 @Service
-public class SpringApplicationEventBus implements EventBus {
+public class InMemoryEventBus implements EventBus {
     private final ApplicationEventPublisher publisher;
 
-    public SpringApplicationEventBus(ApplicationEventPublisher publisher) {
+    public InMemoryEventBus(ApplicationEventPublisher publisher) {
         this.publisher = publisher;
     }
 
