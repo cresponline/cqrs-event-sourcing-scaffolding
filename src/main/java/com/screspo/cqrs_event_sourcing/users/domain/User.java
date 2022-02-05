@@ -2,6 +2,7 @@ package com.screspo.cqrs_event_sourcing.users.domain;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.agregates.AggregateRoot;
 import com.screspo.cqrs_event_sourcing.shared.domain.events.UserCreatedDomainEvent;
+import com.screspo.cqrs_event_sourcing.shared.domain.events.UserEditedDomainEvent;
 
 public class User extends AggregateRoot {
     private final UserId id;
@@ -14,8 +15,24 @@ public class User extends AggregateRoot {
         this.name = builder.name;
         this.surname = builder.surname;
         this.email = builder.email;
+    }
 
-        this.record(new UserCreatedDomainEvent(id.value(), name.value(), surname.value(), email.value()));
+    private User(UserId id, UserName name, UserSurname surname, UserEmail email) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+
+    public User edit(UserId id, UserName name, UserSurname surname, UserEmail email) {
+        User newUser = new User(id, name, surname, email);
+        newUser.record(new UserEditedDomainEvent(
+                id.value(),
+                name.value(),
+                surname.value(),
+                email.value())
+        );
+        return newUser;
     }
 
     public UserId id() {
@@ -61,7 +78,9 @@ public class User extends AggregateRoot {
         }
 
         public User build() {
-            return new User(this);
+            User user = new User(this);
+            user.record(new UserCreatedDomainEvent(id.value(), name.value(), surname.value(), email.value()));
+            return user;
         }
 
     }
