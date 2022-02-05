@@ -1,7 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UsersDTO;
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users.AllUsersSearcher;
+import com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users.UsersResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class UsersGetController {
 
 
     @GetMapping
-    public ResponseEntity<UsersDTO> index() {
+    public ResponseEntity<UsersResponse> index() {
         return ResponseEntity.ok(allUsersSearcher.search());
     }
 }

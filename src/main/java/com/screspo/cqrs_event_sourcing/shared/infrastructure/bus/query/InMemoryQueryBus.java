@@ -2,9 +2,9 @@ package com.screspo.cqrs_event_sourcing.shared.infrastructure.bus.query;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.*;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public final class InMemoryQueryBus implements QueryBus {
     private final QueryHandlersInformation information;
     private final ApplicationContext context;

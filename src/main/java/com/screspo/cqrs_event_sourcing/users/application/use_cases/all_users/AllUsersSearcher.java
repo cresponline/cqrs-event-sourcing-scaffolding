@@ -1,7 +1,6 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users;
 
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UsersDTO;
+import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.UserResponse;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +16,10 @@ public class AllUsersSearcher {
 
     }
 
-    public UsersDTO search() {
-        return new UsersDTO(userRepository.searchAll()
+    public UsersResponse search() {
+        return new UsersResponse(userRepository.searchAll()
                 .stream()
-                .map(UserDTO::fromAggregate)
+                .map(UserResponse::fromAggregate)
                 .collect(Collectors.toList()));
     }
 }

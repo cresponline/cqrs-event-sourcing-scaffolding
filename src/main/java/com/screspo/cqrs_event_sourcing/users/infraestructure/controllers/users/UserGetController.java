@@ -2,7 +2,6 @@ package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryBus;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryHandlerExecutionError;
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UserDTO;
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.FindUserQuery;
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.UserResponse;
 import org.springframework.http.HttpStatus;

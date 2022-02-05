@@ -1,7 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.controllers.users;
 
-import com.screspo.cqrs_event_sourcing.users.application.dtos.UsersDTO;
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users.AllUsersSearcher;
+import com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users.UsersResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +37,7 @@ class UsersGetControllerTest {
 
     @Test
     void shouldRespondsWithOkHttpStatus() {
-        ResponseEntity<UsersDTO> usersResponse = usersGetController.index();
+        ResponseEntity<UsersResponse> usersResponse = usersGetController.index();
         verify(allUsersSearcher).search();
         assertEquals(HttpStatus.OK, usersResponse.getStatusCode());
     }

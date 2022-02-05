@@ -1,6 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
 import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
+import com.screspo.cqrs_event_sourcing.users.domain.UserId;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -41,7 +43,7 @@ class UserSearcherTest {
     void searchMustThrowAnUserNotFoundException() {
         when(usersRepository.search(anyString())).thenReturn(Optional.empty());
         assertThrows(UserNotFoundException.class,
-                () -> userSearcher.search("random-id"));
+                () -> userSearcher.search(new UserId(UUID.randomUUID().toString())));
         verify(usersRepository).search(anyString());
     }
 

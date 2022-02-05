@@ -4,14 +4,14 @@ import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.Query;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryHandler;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryNotRegisteredError;
 import org.reflections.Reflections;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
 
-@Component
+@Service
 public final class QueryHandlersInformation {
     HashMap<Class<? extends Query>, Class<? extends QueryHandler>> indexedQueryHandlers;
 

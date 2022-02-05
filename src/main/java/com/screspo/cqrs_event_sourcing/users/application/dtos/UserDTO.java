@@ -1,7 +1,6 @@
 package com.screspo.cqrs_event_sourcing.users.application.dtos;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.Response;
-import com.screspo.cqrs_event_sourcing.users.domain.User;
 
 public class UserDTO implements Response {
     private final String id;
@@ -14,10 +13,6 @@ public class UserDTO implements Response {
         this.name = name;
         this.surname = surname;
         this.email = email;
-    }
-
-    public static UserDTO fromAggregate(User user) {
-        return new UserDTO(user.id().value(), user.name().value(), user.surname().value(), user.email().value());
     }
 
     public String id() {
