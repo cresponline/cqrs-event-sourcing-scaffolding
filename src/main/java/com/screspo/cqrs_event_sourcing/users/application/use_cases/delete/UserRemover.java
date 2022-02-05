@@ -1,11 +1,11 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.delete;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.EventBus;
-import com.screspo.cqrs_event_sourcing.shared.domain.events.UserDeletedDomainEvent;
+import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
+import com.screspo.cqrs_event_sourcing.users.domain.User;
+import com.screspo.cqrs_event_sourcing.users.domain.UserId;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 @Service
 public class UserRemover {
@@ -18,8 +18,12 @@ public class UserRemover {
         this.eventBus = eventBus;
     }
 
-    public void remove(String id) {
-        usersRepository.delete(id);
-        eventBus.publish(Collections.singletonList(new UserDeletedDomainEvent(id)));
+    public void remove(UserId id) {
+        User user = usersRepository.search(id.value()).orElseThrow(
+                () -> {
+                    throw new UserNotFoundException();
+                });
+        usersRepository.delete(user.id().value());
+        eventBus.publish(user.delete().pullDomainEvents());
     }
 }

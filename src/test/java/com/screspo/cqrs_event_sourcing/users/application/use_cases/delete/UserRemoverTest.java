@@ -1,5 +1,6 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.delete;
 
+import com.screspo.cqrs_event_sourcing.users.domain.UserId;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -34,7 +37,7 @@ class UserRemoverTest {
 
     @Test
     void shouldCallUserRepositoryDelete() {
-        userRemover.remove("id");
+        userRemover.remove(new UserId(UUID.randomUUID().toString()));
         verify(usersRepository).delete(anyString());
     }
 

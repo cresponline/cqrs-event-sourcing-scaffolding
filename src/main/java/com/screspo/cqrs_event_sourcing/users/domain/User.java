@@ -2,6 +2,7 @@ package com.screspo.cqrs_event_sourcing.users.domain;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.agregates.AggregateRoot;
 import com.screspo.cqrs_event_sourcing.shared.domain.events.UserCreatedDomainEvent;
+import com.screspo.cqrs_event_sourcing.shared.domain.events.UserDeletedDomainEvent;
 import com.screspo.cqrs_event_sourcing.shared.domain.events.UserEditedDomainEvent;
 
 public class User extends AggregateRoot {
@@ -33,6 +34,12 @@ public class User extends AggregateRoot {
                 email.value())
         );
         return edited;
+    }
+
+    public User delete() {
+        User toDelete = new User(this.id, this.name, this.surname, this.email);
+        toDelete.record(new UserDeletedDomainEvent(this.id.value()));
+        return toDelete;
     }
 
     public UserId id() {
