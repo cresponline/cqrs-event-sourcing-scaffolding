@@ -1,7 +1,6 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryHandler;
-import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +12,7 @@ public final class FindUsersQueryHandler implements QueryHandler<FindUsersQuery,
     }
 
     @Override
-    public UsersResponse handle(FindUsersQuery query) throws UserNotFoundException {
+    public UsersResponse handle(FindUsersQuery query) {
         return allUsersSearcher.search();
     }
 }
