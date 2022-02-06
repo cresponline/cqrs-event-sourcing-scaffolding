@@ -1,16 +1,21 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.create;
 
+import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.EventBus;
+import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserAlreadyExistsException;
+import com.screspo.cqrs_event_sourcing.users.domain.User;
 import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
 import com.screspo.cqrs_event_sourcing.users.mothers.UsersMother;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-class UserCreatorTest {
+class UserCreatorUserAlreadyExistTest {
 
     @InjectMocks
     private static UserCreator userCreator;
@@ -18,8 +23,12 @@ class UserCreatorTest {
     @Mock
     private static UsersRepository usersRepository;
 
-    private AutoCloseable closeable;
+    @Mock
+    private static EventBus eventBus;
 
+    private final User user = UsersMother.exist();
+
+    private AutoCloseable closeable;
 
     @BeforeEach
     void setUp() {
@@ -32,19 +41,11 @@ class UserCreatorTest {
         closeable.close();
     }
 
-
-//    @Test
-//    void shouldCallUserRepositorySave() {
-//        userCreator.create(UserDTOMother.random());
-//        verify(usersRepository).save(any(User.class));
-//    }
-//
-//    @Test
-//    void mustThrowAnUserAlreadyExistsException() {
-//        UserDTO existingUser = UserDTOMother.createFromUser(UsersMother.searchAll().get(0));
-//        assertThrows(UserAlreadyExistsException.class,
-//                () -> userCreator.create(existingUser));
-//    }
+    @Test
+    void should_throw_an_UserAlreadyExistsException() {
+        assertThrows(UserAlreadyExistsException.class,
+                () -> userCreator.create(user.id(), user.name(), user.surname(), user.email()));
+    }
 
 
 }

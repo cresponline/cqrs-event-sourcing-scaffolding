@@ -4,6 +4,8 @@ import com.screspo.cqrs_event_sourcing.users.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 public class UsersMother {
     public static List<User> searchAll() {
@@ -28,5 +30,21 @@ public class UsersMother {
         users.add(user2);
 
         return users;
+    }
+
+    public static User random() {
+
+        return new User.Builder()
+                .id(new UserId(UUID.randomUUID().toString()))
+                .name(new UserName("user_random"))
+                .surname(new UserSurname("random"))
+                .email(new UserEmail("random@email.com"))
+
+                .build();
+    }
+
+    public static User exist() {
+        List<User> users = searchAll();
+        return users.get(new Random().nextInt(users.size()));
     }
 }
