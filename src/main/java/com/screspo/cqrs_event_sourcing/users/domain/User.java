@@ -1,9 +1,13 @@
 package com.screspo.cqrs_event_sourcing.users.domain;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.agregates.AggregateRoot;
-import com.screspo.cqrs_event_sourcing.shared.domain.events.UserCreatedDomainEvent;
-import com.screspo.cqrs_event_sourcing.shared.domain.events.UserDeletedDomainEvent;
-import com.screspo.cqrs_event_sourcing.shared.domain.events.UserEditedDomainEvent;
+import com.screspo.cqrs_event_sourcing.users.domain.events.UserCreatedDomainEvent;
+import com.screspo.cqrs_event_sourcing.users.domain.events.UserDeletedDomainEvent;
+import com.screspo.cqrs_event_sourcing.users.domain.events.UserEditedDomainEvent;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserEmail;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserName;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserSurname;
 
 public class User extends AggregateRoot {
     private final UserId id;

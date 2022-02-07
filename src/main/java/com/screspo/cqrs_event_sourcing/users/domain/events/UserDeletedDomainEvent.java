@@ -1,4 +1,4 @@
-package com.screspo.cqrs_event_sourcing.shared.domain.events;
+package com.screspo.cqrs_event_sourcing.users.domain.events;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
 

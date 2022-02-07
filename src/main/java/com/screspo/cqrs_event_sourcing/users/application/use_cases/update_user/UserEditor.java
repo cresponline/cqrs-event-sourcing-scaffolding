@@ -3,6 +3,11 @@ package com.screspo.cqrs_event_sourcing.users.application.use_cases.update_user;
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.EventBus;
 import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
 import com.screspo.cqrs_event_sourcing.users.domain.*;
+import com.screspo.cqrs_event_sourcing.users.domain.persistence.UsersRepository;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserEmail;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserName;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserSurname;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -2,7 +2,7 @@ package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.QueryHandler;
 import com.screspo.cqrs_event_sourcing.users.application.exceptions.UserNotFoundException;
-import com.screspo.cqrs_event_sourcing.users.domain.UserId;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
 import org.springframework.stereotype.Service;
 
 @Service

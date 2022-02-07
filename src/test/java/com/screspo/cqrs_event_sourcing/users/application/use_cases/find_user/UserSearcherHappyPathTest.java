@@ -1,7 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
 import com.screspo.cqrs_event_sourcing.users.domain.User;
-import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
+import com.screspo.cqrs_event_sourcing.users.domain.persistence.UsersRepository;
 import com.screspo.cqrs_event_sourcing.users.mothers.UsersMother;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

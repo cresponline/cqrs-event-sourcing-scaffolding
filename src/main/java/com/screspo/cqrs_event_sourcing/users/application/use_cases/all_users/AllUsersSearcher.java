@@ -1,7 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.all_users;
 
 import com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user.UserResponse;
-import com.screspo.cqrs_event_sourcing.users.domain.UsersRepository;
+import com.screspo.cqrs_event_sourcing.users.domain.persistence.UsersRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;

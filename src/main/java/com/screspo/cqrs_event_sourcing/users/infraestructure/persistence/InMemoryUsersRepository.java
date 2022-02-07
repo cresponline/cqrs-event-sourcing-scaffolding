@@ -1,6 +1,11 @@
 package com.screspo.cqrs_event_sourcing.users.infraestructure.persistence;
 
 import com.screspo.cqrs_event_sourcing.users.domain.*;
+import com.screspo.cqrs_event_sourcing.users.domain.persistence.UsersRepository;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserEmail;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserName;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserSurname;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

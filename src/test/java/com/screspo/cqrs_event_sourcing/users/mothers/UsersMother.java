@@ -1,6 +1,10 @@
 package com.screspo.cqrs_event_sourcing.users.mothers;
 
 import com.screspo.cqrs_event_sourcing.users.domain.*;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserEmail;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserName;
+import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserSurname;
 
 import java.util.ArrayList;
 import java.util.List;

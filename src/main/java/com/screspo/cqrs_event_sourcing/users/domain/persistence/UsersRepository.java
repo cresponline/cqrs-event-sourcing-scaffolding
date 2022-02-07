@@ -1,4 +1,6 @@
-package com.screspo.cqrs_event_sourcing.users.domain;
+package com.screspo.cqrs_event_sourcing.users.domain.persistence;
+
+import com.screspo.cqrs_event_sourcing.users.domain.User;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.screspo.cqrs_event_sourcing.shared.domain.events;
+package com.screspo.cqrs_event_sourcing.users.domain.events;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
 
@@ -6,12 +6,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public final class UserCreatedDomainEvent extends DomainEvent {
+public final class UserEditedDomainEvent extends DomainEvent {
     private final String name;
     private final String surname;
     private final String email;
 
-    public UserCreatedDomainEvent() {
+    public UserEditedDomainEvent() {
         super(null);
 
         this.name = null;
@@ -19,7 +19,7 @@ public final class UserCreatedDomainEvent extends DomainEvent {
         this.email = null;
     }
 
-    public UserCreatedDomainEvent(String aggregateId, String name, String surname, String email) {
+    public UserEditedDomainEvent(String aggregateId, String name, String surname, String email) {
         super(aggregateId);
 
         this.name = name;
@@ -27,7 +27,7 @@ public final class UserCreatedDomainEvent extends DomainEvent {
         this.email = email;
     }
 
-    public UserCreatedDomainEvent(
+    public UserEditedDomainEvent(
             String aggregateId,
             String eventId,
             String occurredOn,
@@ -44,7 +44,7 @@ public final class UserCreatedDomainEvent extends DomainEvent {
 
     @Override
     public String eventName() {
-        return "user.created";
+        return "user.edited";
     }
 
     @Override
@@ -57,13 +57,13 @@ public final class UserCreatedDomainEvent extends DomainEvent {
     }
 
     @Override
-    public UserCreatedDomainEvent fromPrimitives(
+    public UserEditedDomainEvent fromPrimitives(
             String aggregateId,
             HashMap<String, Serializable> body,
             String eventId,
             String occurredOn
     ) {
-        return new UserCreatedDomainEvent(
+        return new UserEditedDomainEvent(
                 aggregateId,
                 eventId,
                 occurredOn,
@@ -93,7 +93,7 @@ public final class UserCreatedDomainEvent extends DomainEvent {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        UserCreatedDomainEvent that = (UserCreatedDomainEvent) o;
+        UserEditedDomainEvent that = (UserEditedDomainEvent) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(email, that.email);
