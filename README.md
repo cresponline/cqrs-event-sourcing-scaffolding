@@ -12,4 +12,4 @@ Maven based in CQRS & Event Sourcing Scaffolding Architecture.
 3. Set it as your default JVM
 4. Clone this repository: `https://github.com/cresponline/cqrs-event-sourcing-scaffolding.git`.
 5. mvn clean install
-6. java -jar target/hexagonal-0.0.1-SNAPSHOT.jar
+6. java -jar target/cqrs_event_sourcing-0.0.1-SNAPSHOT.jar
