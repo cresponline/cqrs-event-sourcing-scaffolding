@@ -1,9 +1,12 @@
 package com.screspo.cqrs_event_sourcing.shared.domain.value_objects;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class StringValueObject {
-    private String value;
+    private final String value;
 
     public StringValueObject(String value) {
         this.value = value;

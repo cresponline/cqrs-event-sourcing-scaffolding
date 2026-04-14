@@ -1,9 +1,12 @@
 package com.screspo.cqrs_event_sourcing.shared.domain.value_objects;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
 public abstract class Identifier implements Serializable {
     final protected String value;
 
