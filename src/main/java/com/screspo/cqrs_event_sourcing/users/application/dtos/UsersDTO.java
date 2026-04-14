@@ -1,17 +1,12 @@
 package com.screspo.cqrs_event_sourcing.users.application.dtos;
 
+import lombok.experimental.Accessors;
+import lombok.Value;
+
 import java.util.List;
 
+@Value
+@Accessors(fluent = true)
 public class UsersDTO {
-
-    private final List<UserDTO> users;
-
-    public UsersDTO(List<UserDTO> users) {
-        this.users = users;
-    }
-
-    public List<UserDTO> getUsers() {
-        return users;
-    }
-
+    List<UserDTO> users;
 }
