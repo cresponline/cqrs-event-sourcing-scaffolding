@@ -9,6 +9,6 @@ public class UserResponseMother {
 
     public static UserResponse random() {
         UsersResponse usersResponse = UsersResponseMother.create();
-        return usersResponse.getUsers().get(new Random().nextInt(usersResponse.getUsers().size()));
+        return usersResponse.users().get(new Random().nextInt(usersResponse.users().size()));
     }
 }
