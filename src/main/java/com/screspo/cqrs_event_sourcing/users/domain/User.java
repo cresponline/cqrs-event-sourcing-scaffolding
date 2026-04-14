@@ -1,6 +1,7 @@
 package com.screspo.cqrs_event_sourcing.users.domain;
 
-import com.screspo.cqrs_event_sourcing.shared.domain.agregates.AggregateRoot;
+import com.screspo.cqrs_event_sourcing.shared.domain.aggregates.AggregateRoot;
+import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
 import com.screspo.cqrs_event_sourcing.users.domain.events.UserCreatedDomainEvent;
 import com.screspo.cqrs_event_sourcing.users.domain.events.UserDeletedDomainEvent;
 import com.screspo.cqrs_event_sourcing.users.domain.events.UserEditedDomainEvent;
@@ -8,6 +9,8 @@ import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserEmail;
 import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserId;
 import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserName;
 import com.screspo.cqrs_event_sourcing.users.domain.value_objects.UserSurname;
+
+import java.util.List;
 
 public class User extends AggregateRoot {
     private final UserId id;
@@ -60,6 +63,26 @@ public class User extends AggregateRoot {
 
     public UserEmail email() {
         return email;
+    }
+
+    public static User fromEvent(DomainEvent event) {
+        if (event instanceof UserCreatedDomainEvent createdEvent) {
+            return new User(
+                    new UserId(createdEvent.aggregateId()),
+                    new UserName(createdEvent.name()),
+                    new UserSurname(createdEvent.surname()),
+                    new UserEmail(createdEvent.email())
+            );
+        }
+        if (event instanceof UserEditedDomainEvent editedEvent) {
+            return new User(
+                    null,
+                    new UserName(editedEvent.name()),
+                    new UserSurname(editedEvent.surname()),
+                    new UserEmail(editedEvent.email())
+            );
+        }
+        throw new IllegalArgumentException("Unsupported event type: " + event.getClass().getSimpleName());
     }
 
     public static class Builder {
