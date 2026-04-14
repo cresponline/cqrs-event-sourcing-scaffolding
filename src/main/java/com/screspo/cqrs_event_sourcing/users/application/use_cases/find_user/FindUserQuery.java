@@ -1,15 +1,11 @@
 package com.screspo.cqrs_event_sourcing.users.application.use_cases.find_user;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.query.Query;
+import lombok.experimental.Accessors;
+import lombok.Value;
 
+@Value
+@Accessors(fluent = true)
 public final class FindUserQuery implements Query {
-    private final String id;
-
-    public FindUserQuery(String id) {
-        this.id = id;
-    }
-
-    public String id() {
-        return id;
-    }
+    String id;
 }
