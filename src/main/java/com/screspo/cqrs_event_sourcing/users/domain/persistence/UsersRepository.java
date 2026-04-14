@@ -14,4 +14,8 @@ public interface UsersRepository {
     void delete(String id);
 
     Optional<User> search(String id);
+
+    Optional<User> findById(String id);
+
+    boolean exists(String id);
 }
