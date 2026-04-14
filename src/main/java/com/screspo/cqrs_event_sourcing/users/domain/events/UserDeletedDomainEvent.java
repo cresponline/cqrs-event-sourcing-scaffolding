@@ -1,11 +1,14 @@
 package com.screspo.cqrs_event_sourcing.users.domain.events;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Objects;
 
+@Getter
+@Accessors(fluent = true)
 public final class UserDeletedDomainEvent extends DomainEvent {
 
     public UserDeletedDomainEvent() {
@@ -47,22 +50,5 @@ public final class UserDeletedDomainEvent extends DomainEvent {
                 eventId,
                 occurredOn
         );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        UserDeletedDomainEvent that = (UserDeletedDomainEvent) o;
-        return Objects.equals(aggregateId(), that.aggregateId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(aggregateId());
     }
 }

@@ -1,12 +1,17 @@
 package com.screspo.cqrs_event_sourcing.shared.domain.bus.event;
 
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Getter
+@Accessors(fluent = true)
 public abstract class DomainEvent {
     private String aggregateId;
     private String eventId;
@@ -37,16 +42,4 @@ public abstract class DomainEvent {
             String eventId,
             String occurredOn
     );
-
-    public String aggregateId() {
-        return aggregateId;
-    }
-
-    public String eventId() {
-        return eventId;
-    }
-
-    public String occurredOn() {
-        return occurredOn;
-    }
 }

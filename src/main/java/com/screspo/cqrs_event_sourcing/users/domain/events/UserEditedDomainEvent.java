@@ -1,11 +1,14 @@
 package com.screspo.cqrs_event_sourcing.users.domain.events;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Objects;
 
+@Getter
+@Accessors(fluent = true)
 public final class UserEditedDomainEvent extends DomainEvent {
     private final String name;
     private final String surname;
@@ -71,36 +74,5 @@ public final class UserEditedDomainEvent extends DomainEvent {
                 (String) body.get("surname"),
                 (String) body.get("email")
         );
-    }
-
-    public String name() {
-        return name;
-    }
-
-    public String surname() {
-        return surname;
-    }
-
-    public String email() {
-        return email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        UserEditedDomainEvent that = (UserEditedDomainEvent) o;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname) &&
-                Objects.equals(email, that.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, email);
     }
 }
