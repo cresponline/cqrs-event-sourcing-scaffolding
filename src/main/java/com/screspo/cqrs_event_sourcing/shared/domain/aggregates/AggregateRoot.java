@@ -1,11 +1,13 @@
 package com.screspo.cqrs_event_sourcing.shared.domain.aggregates;
 
 import com.screspo.cqrs_event_sourcing.shared.domain.bus.event.DomainEvent;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Getter
 public abstract class AggregateRoot {
     private List<DomainEvent> domainEvents = new ArrayList<>();
 
